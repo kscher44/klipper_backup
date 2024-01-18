@@ -126,11 +126,16 @@ gcode:
 gcode:
     {% set transmit=params.TRANSMIT|default(1) %}
     _set_logo_leds red=0 blue=0 green=0 transmit={transmit}
+    
+[gcode_macro set_nozzle_leds_off]
+gcode:
+    {% set transmit=params.TRANSMIT|default(2) %}
+    _set_nozzle_leds red=0 blue=0 green=0 transmit={transmit}
 
 [gcode_macro status_off]
 gcode:
-    set_logo_leds_off transmit=0
-    set_nozzle_leds_off
+    _set_sb_leds_by_name leds="logo" color="off" transmit=1
+    _set_sb_leds_by_name leds="nozzle" color="off" transmit=1
 
 [gcode_macro status_ready]
 gcode:
@@ -140,7 +145,7 @@ gcode:
 [gcode_macro status_busy]
 gcode:
     _set_sb_leds_by_name leds="logo" color="busy" transmit=1
-    set_nozzle_leds_on
+    _set_sb_leds_by_name leds="nozzle" color="on" transmit=1
 
 [gcode_macro status_heating]
 gcode:
@@ -150,29 +155,30 @@ gcode:
 [gcode_macro status_leveling]
 gcode:
     _set_sb_leds_by_name leds="logo" color="leveling" transmit=1
-    set_nozzle_leds_on
+    _set_sb_leds_by_name leds="nozzle" color="on" transmit=1
 
 [gcode_macro status_homing]
 gcode:
     _set_sb_leds_by_name leds="logo" color="homing" transmit=1
-    set_nozzle_leds_on
+    _set_sb_leds_by_name leds="nozzle" color="on" transmit=1
 
 [gcode_macro status_cleaning]
 gcode:
     _set_sb_leds_by_name leds="logo" color="cleaning" transmit=1
-    set_nozzle_leds_on
+    _set_sb_leds_by_name leds="nozzle" color="on" transmit=1
 
 [gcode_macro status_meshing]
 gcode:
     _set_sb_leds_by_name leds="logo" color="meshing" transmit=1
-    set_nozzle_leds_on
+    _set_sb_leds_by_name leds="nozzle" color="on" transmit=1
 
 [gcode_macro status_calibrating_z]
 gcode:
     _set_sb_leds_by_name leds="logo" color="calibrating_z" transmit=1
-    set_nozzle_leds_on
+    _set_sb_leds_by_name leds="nozzle" color="on" transmit=1
 
 [gcode_macro status_printing]
 gcode:
     _set_sb_leds_by_name leds="logo" color="printing" transmit=1
-    set_nozzle_leds_on
+   _set_sb_leds_by_name leds="nozzle" color="on" transmit=1
+    
