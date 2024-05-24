@@ -179,7 +179,7 @@ gcode:
 gcode:
     _set_sb_leds_by_name leds="logo" color="meshing" transmit=0
     set_nozzle_leds_on
-
+    
 [gcode_macro status_calibrating_z]
 gcode:
     _set_sb_leds_by_name leds="logo" color="calibrating_z" transmit=0
